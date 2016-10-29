@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title>Z_ProductFilter_ECC</title>
+
+		<script id="sap-ui-bootstrap"
+			src="../../resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-resourceroots='{"Z_ProductFilter_ECC": ""}'>
+		</script>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				sap.ui.localResources("views");
+		        sap.ui.localResources("controllers");
+	
+				 new sap.m.App().addPage(
+		     	                sap.ui.view({
+		     	               	id: "idView1",
+		     	            	viewName: "views.ProductList",
+		     	             	type : "XML"})
+		      	).placeAt("content");
+		    });
+		</script>
+	</head>
+
+	<body class="sapUiBody" id="content">
+	</body>
+
+</html>

@@ -1,0 +1,75 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:c="sap.ui.core"
+	controllerName="controllers.ProductList">
+	<Page title="Product">
+	<!-- items inside the List tag is aggregation of it since it is inherited from new sap.m.ListBase and it can be used here-->
+	<List items="{ path: '/ProductSet', parameters:{ select : 'ProductID,Name' } }" growing="true" growingThreshold="5"
+		headerText="Products" id="idList"
+		mode="Delete"
+		delete="onDelete">
+		<!--infoToolbar is second aggregation used here of sap.m.ListBase -->
+		<infoToolbar>
+		
+			<!--infoToolbar is of type sap.m.Toolbar -->
+			<Toolbar design = "Transparent">
+				<Label text = "Product From" />
+				<Select items="{ path: '/ProductSet', parameters:{ select : 'ProductID' }}" id="idSelectFrom">
+					<!--items is aggregation of sap.m.Select and is of type sap.ui.core.Item-->
+					<items>
+						<!--Item is a Element -->
+						<c:Item text="{ProductID}"></c:Item>
+					</items>
+				</Select>
+				     <Label text = "Product To" />
+					<Select items="{ path: '/ProductSet', parameters:{ select : 'ProductID' }}" id="idSelectTo">
+					<!--items is aggregation of sap.m.Select and is of type sap.ui.core.Item-->
+					<items>
+						<!--Item is a Element -->
+						<c:Item text="{ProductID}"></c:Item>
+					</items>
+				</Select>
+				
+				<Button text="Filter" type="Accept" press="onPress"/>
+				
+			</Toolbar>
+		</infoToolbar>
+		<items>
+			<StandardListItem title="{ProductID}" description="{Name}"  type="Active" press = "onItemPress" />
+		</items>
+	</List>
+	
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormDisplay354"
+			minWidth="1024"
+			maxContainerCols="2"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Address"
+			labelSpanL="3"
+			labelSpanM="3"
+			emptySpanL="4"
+			emptySpanM="4"
+			columnsL="1"
+			columnsM="1"
+			visible = "false">
+			<f:content>
+				<Label text="Product ID" />
+				<Text text="{/ProductID}" id="idProd" />
+				<Label text="Name" />
+				<Text text="{/Name}" />
+				<Label text="Supplier" />
+				<Text text="{/SupplierID}" />
+				<Button text="Update" type ="Accept" press="onUpdate" width = "100px"></Button>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+	
+	<footer>
+		<Bar>
+		     <contentRight>
+		     	<Button text = "Create" type = "Accept" press="onCreate"></Button>
+		     </contentRight>	
+		</Bar>
+	</footer>
+	
+	</Page>
+</mvc:View>
